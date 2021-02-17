@@ -4,12 +4,7 @@ USER root
 
 # conda install requires bzip
 RUN apt-get update && apt-get install -y python3-pip python3-dev python-virtualenv bzip2 g++ git sudo 
-RUN apt-get install -y xfce4-terminal software-properties-common python-numpy
-
-# browsers
-RUN rm /usr/share/xfce4/helpers/debian-sensible-browser.desktop
-RUN add-apt-repository --yes ppa:jonathonf/firefox-esr && apt-get update
-RUN apt-get remove -y --purge firefox && apt-get install -y firefox-esr
+RUN apt-get install -y software-properties-common python-numpy
 
 ENV USER orange
 ENV PASSWORD orange
@@ -22,6 +17,7 @@ RUN gpasswd -a ${USER} sudo
 
 USER orange
 WORKDIR ${HOME}
+
 
 RUN wget -q -O anaconda.sh https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
 RUN bash anaconda.sh -b -p ~/.conda && rm anaconda.sh
