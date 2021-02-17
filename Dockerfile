@@ -3,8 +3,8 @@ FROM consol/ubuntu-xfce-vnc
 USER root
 
 # conda install requires bzip
-RUN apt-get update && apt-get install -y python3-pip python3-dev python-virtualenv bzip2 g++ git sudo 
-RUN apt-get install -y software-properties-common python-numpy
+RUN apt-get update && apt-get install -y python3-pip python3-dev python-virtualenv bzip2
+RUN apt-get install -y python-numpy
 
 ENV USER orange
 ENV PASSWORD orange
